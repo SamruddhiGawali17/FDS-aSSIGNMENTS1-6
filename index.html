@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontend Assignments Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 900px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border-left: 5px solid #007bff;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #007bff;
+    }
+    .card p {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>My Frontend Assignments</h1>
+
+  <div class="grid">
+    <a href="assignment-1-calculator/" class="card">
+      <h3>Assignment 1</h3>
+      <p>JavaScript Calculator using Functions (if-else/switch).</p>
+    </a>
+
+    <a href="assignment-2-todo/" class="card">
+      <h3>Assignment 2</h3>
+      <p>DOM-based Interactive To-Do List.</p>
+    </a>
+
+    <a href="assignment-3-form-validation/" class="card">
+      <h3>Assignment 3</h3>
+      <p>JavaScript User Registration Form Validation.</p>
+    </a>
+
+    <a href="assignment-4-profile-card/" class="card">
+      <h3>Assignment 4</h3>
+      <p>React Profile Card using Props.</p>
+    </a>
+
+    <a href="assignment-5-controlled-form/" class="card">
+      <h3>Assignment 5</h3>
+      <p>Controlled Form in React with real-time preview.</p>
+    </a>
+
+    <a href="assignment-6-counter-app/" class="card">
+      <h3>Assignment 6</h3>
+      <p>React Counter App using useState Hook.</p>
+    </a>
+  </div>
+
+</body>
+</html>

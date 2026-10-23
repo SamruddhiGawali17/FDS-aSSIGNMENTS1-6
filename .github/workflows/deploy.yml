@@ -1,0 +1,82 @@
+name: Deploy All Assignments to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      # Build React Assignment 4
+      - name: Build Assignment 4
+        working-directory: ./assignment-4-profile-card
+        run: |
+          npm ci
+          npm run build
+
+      # Build React Assignment 5
+      - name: Build Assignment 5
+        working-directory: ./assignment-5-controlled-form
+        run: |
+          npm ci
+          npm run build
+
+      # Build React Assignment 6
+      - name: Build Assignment 6
+        working-directory: ./assignment-6-counter-app
+        run: |
+          npm ci
+          npm run build
+
+      # Assemble everything into a single staging folder (_site)
+      - name: Assemble Static Site
+        run: |
+          mkdir -p _site
+          
+          # Copy root landing page
+          cp index.html _site/
+          
+          # Copy vanilla JS assignments directly
+          cp -r assignment-1-calculator _site/
+          cp -r assignment-2-todo _site/
+          cp -r assignment-3-form-validation _site/
+          
+          # Copy React build dist outputs into respective subfolders
+          mkdir -p _site/assignment-4-profile-card
+          cp -r assignment-4-profile-card/dist/* _site/assignment-4-profile-card/
+          
+          mkdir -p _site/assignment-5-controlled-form
+          cp -r assignment-5-controlled-form/dist/* _site/assignment-5-controlled-form/
+          
+          mkdir -p _site/assignment-6-counter-app
+          cp -r assignment-6-counter-app/dist/* _site/assignment-6-counter-app/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '_site'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
