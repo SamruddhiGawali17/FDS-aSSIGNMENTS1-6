@@ -6,7 +6,7 @@ function App() {
     <div style={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}>
       <ProfileCard 
         name="John Doe" 
-        image="https://via.placeholder.com/100" 
+        image="Samruddhi.jpegSamruddhi.jpeg" 
         description="Frontend Developer passionate about crafting clean and user-friendly web interfaces." 
       />
     </div>
