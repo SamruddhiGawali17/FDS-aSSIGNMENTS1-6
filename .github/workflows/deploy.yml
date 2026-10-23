@@ -2,7 +2,7 @@ name: Deploy All Assignments to GitHub Pages
 
 on:
   push:
-    branches: ["main"]
+    branches: ["master"]
 
 permissions:
   contents: read
@@ -23,27 +23,27 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 22
 
       # Build React Assignment 4
       - name: Build Assignment 4
         working-directory: ./assignment-4-profile-card
         run: |
-          npm ci
+          npm install
           npm run build
 
       # Build React Assignment 5
       - name: Build Assignment 5
         working-directory: ./assignment-5-controlled-form
         run: |
-          npm ci
+          npm install
           npm run build
 
       # Build React Assignment 6
       - name: Build Assignment 6
         working-directory: ./assignment-6-counter-app
         run: |
-          npm ci
+          npm install
           npm run build
 
       # Assemble everything into a single staging folder (_site)
